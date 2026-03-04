@@ -4,5 +4,5 @@
 	"description": "Compact theme with smaller text, based on Origine",
 	"version": 1.0,
 	"files": ["_frss.css", "robsonway-compact.css"],
-	"theme-color": {"dark": "#1f1f1f", "light": "#f0f0f0"}
+	"theme-color": {"dark": "#0a0a18", "light": "#0f0f1a"}
 }
