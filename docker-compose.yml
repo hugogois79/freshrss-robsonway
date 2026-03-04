@@ -10,6 +10,7 @@ services:
     volumes:
       - ./data:/var/www/FreshRSS/data
       - ./extensions:/var/www/FreshRSS/extensions
+      - ./themes/Robsonway-Compact:/var/www/FreshRSS/p/themes/Robsonway-Compact
     environment:
       - TZ=Europe/Lisbon
       - CRON_MIN=*/15

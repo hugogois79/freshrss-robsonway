@@ -1,0 +1,8 @@
+{
+	"name": "Robsonway Compact",
+	"author": "Robsonway",
+	"description": "Compact theme with smaller text, based on Origine",
+	"version": 1.0,
+	"files": ["_frss.css", "_origine.css", "robsonway-compact.css"],
+	"theme-color": {"dark": "#1f1f1f", "light": "#f0f0f0"}
+}
