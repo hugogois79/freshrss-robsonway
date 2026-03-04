@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+<head>
+    <title>Robsonway News Feeds</title>
+</head>
+<body>
+    <outline text="🤖 AI" title="AI">
+        <outline type="rss" text="OpenAI Blog" title="OpenAI Blog" xmlUrl="https://openai.com/blog/rss.xml"/>
+        <outline type="rss" text="Hugging Face Blog" title="Hugging Face Blog" xmlUrl="https://huggingface.co/blog/feed.xml"/>
+        <outline type="rss" text="Google AI Blog" title="Google AI Blog" xmlUrl="https://blog.google/technology/ai/rss/"/>
+        <outline type="rss" text="DeepMind Blog" title="DeepMind Blog" xmlUrl="https://deepmind.google/blog/rss.xml"/>
+        <outline type="rss" text="The Verge AI" title="The Verge AI" xmlUrl="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"/>
+    </outline>
+    <outline text="🇵🇹 Portugal" title="Portugal">
+        <outline type="rss" text="Público" title="Público" xmlUrl="https://feeds.feedburner.com/PublicoRSS"/>
+        <outline type="rss" text="Observador" title="Observador" xmlUrl="https://observador.pt/feed/"/>
+        <outline type="rss" text="ECO" title="ECO" xmlUrl="https://eco.sapo.pt/feed/"/>
+    </outline>
+    <outline text="📊 Financial Markets" title="Financial Markets">
+        <outline type="rss" text="Bloomberg Markets" title="Bloomberg Markets" xmlUrl="https://feeds.bloomberg.com/markets/news.rss"/>
+        <outline type="rss" text="Financial Times" title="Financial Times" xmlUrl="https://www.ft.com/rss/home"/>
+        <outline type="rss" text="CNBC" title="CNBC" xmlUrl="https://www.cnbc.com/id/100003114/device/rss/rss.html"/>
+        <outline type="rss" text="MarketWatch" title="MarketWatch" xmlUrl="https://feeds.marketwatch.com/marketwatch/topstories/"/>
+        <outline type="rss" text="Investing.com" title="Investing.com" xmlUrl="https://www.investing.com/rss/news.rss"/>
+        <outline type="rss" text="Yahoo Finance" title="Yahoo Finance" xmlUrl="https://finance.yahoo.com/news/rssindex"/>
+    </outline>
+</body>
+</opml>
