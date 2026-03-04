@@ -199,15 +199,44 @@ a:hover {
 }
 
 /* ============================================
-   FEED LIST — article rows
+   FEED LIST — article rows (productivity)
    ============================================ */
 .flux {
 	border-bottom: 1px solid #1a1a30;
+	padding: 1px 0 !important;
+	min-height: 0 !important;
 }
 
 .flux .item-title {
 	color: #e0e0e0;
 	font-size: 0.85em;
+}
+
+/* Unread articles: bold title + left accent bar */
+.flux.not_read {
+	border-left: 3px solid #42a5f5 !important;
+	background: #12122a !important;
+}
+
+.flux.not_read .item-title {
+	font-weight: 600;
+	color: #fff;
+}
+
+/* Read articles: dimmed for fast scanning */
+.flux:not(.not_read) .item-title {
+	color: #707890;
+	font-weight: 400;
+}
+
+.flux:not(.not_read) .website,
+.flux:not(.not_read) .date {
+	opacity: 0.5;
+}
+
+/* Favorite articles: gold accent */
+.flux.favorite {
+	border-left: 3px solid #f7b500 !important;
 }
 
 .flux:hover {
@@ -225,23 +254,29 @@ a:hover {
 }
 
 .day .name {
-	font-size: 0.85rem;
-	color: #9e9e9e;
-	background: #0f0f1a;
+	font-size: 0.8rem;
+	color: #757575;
+	background: #0a0a18;
+	padding: 3px 8px !important;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
 /* ============================================
-   ARTICLE CONTENT
+   ARTICLE CONTENT — optimized readability
    ============================================ */
 .content {
 	background: #0f0f1a !important;
 	color: #cfd8dc !important;
 	font-size: 0.88rem;
-	line-height: 1.55;
+	line-height: 1.65;
+	max-width: 800px;
 }
 
 .content a {
 	color: #64b5f6;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
 .content a:hover {
@@ -252,11 +287,32 @@ a:hover {
 .content h2,
 .content h3 {
 	color: #eceff1;
+	margin-top: 1.2em;
 }
 
 .content h1 { font-size: 1.3em; }
 .content h2 { font-size: 1.15em; }
 .content h3 { font-size: 1.05em; }
+
+.content img {
+	border-radius: 4px;
+	max-width: 100%;
+}
+
+.content blockquote {
+	border-left: 3px solid #42a5f5;
+	padding-left: 12px;
+	margin-left: 0;
+	color: #9e9e9e;
+	font-style: italic;
+}
+
+.content pre, .content code {
+	background: #141425;
+	border-radius: 3px;
+	padding: 2px 5px;
+	font-size: 0.85em;
+}
 
 /* ============================================
    BUTTONS, INPUTS, FORMS — dark everywhere
@@ -466,4 +522,110 @@ td {
 
 .formLogin .header {
 	background: #0a0a18 !important;
+}
+
+/* ============================================
+   UNREAD BADGES — more visible
+   ============================================ */
+.aside .feed .item-title:not([data-unread="0"])::after,
+.aside .category .title:not([data-unread="0"])::after {
+	background: #1565c0 !important;
+	color: #fff !important;
+	font-weight: 700;
+	border-radius: 10px;
+	padding: 1px 6px;
+	font-size: 0.7rem;
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+.flux {
+	transition: background-color 0.15s ease, opacity 0.3s ease;
+}
+
+.flux .item-title,
+.flux .website,
+.flux .date {
+	transition: color 0.15s ease;
+}
+
+/* ============================================
+   CLOSE-ASIDE overlay
+   ============================================ */
+.close-aside {
+	background: rgba(0,0,0,0.5) !important;
+}
+
+/* ============================================
+   TOOLBAR — better visibility
+   ============================================ */
+.flux_header .item.website span {
+	max-width: 110px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ============================================
+   PRINT — clean output
+   ============================================ */
+@media print {
+	body { background: #fff !important; color: #000 !important; }
+	.header, .aside, .nav_menu, .pagination { display: none !important; }
+	.content { max-width: 100%; }
+}
+
+/* ============================================
+   UNREAD COUNTER BADGES — more visible
+   ============================================ */
+.aside_feed .feed .item-title:not([data-unread="0"])::after,
+.aside_feed .category .title:not([data-unread="0"])::after {
+	background: #1565c0 !important;
+	color: #fff !important;
+	font-weight: 700;
+	border-radius: 10px;
+	min-width: 18px;
+	text-align: center;
+}
+
+/* ============================================
+   TOP BAR ACTIONS — more visible mark-as-read
+   ============================================ */
+.group-actions .btn {
+	border-radius: 3px;
+}
+
+.group-actions .btn:first-child {
+	background: #1565c0 !important;
+	color: #fff !important;
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS everywhere
+   ============================================ */
+.flux,
+.flux .item-title,
+.aside .nav-list .item a,
+.btn {
+	transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+/* ============================================
+   FOCUS INDICATORS for keyboard navigation
+   ============================================ */
+.flux.active,
+.flux.current {
+	outline: 1px solid #42a5f5 !important;
+	outline-offset: -1px;
+	background: #1a2040 !important;
+}
+
+/* ============================================
+   PRINT — clean output
+   ============================================ */
+@media print {
+	body { background: #fff !important; color: #000 !important; }
+	.aside, .header, .nav_menu { display: none !important; }
+	.content { max-width: 100%; color: #000 !important; }
+	.content a { color: #000 !important; text-decoration: underline; }
 }

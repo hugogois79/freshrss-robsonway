@@ -15,11 +15,18 @@ services:
       - TZ=Europe/Lisbon
       - CRON_MIN=*/5
       - FRESHRSS_ENV=production
+    mem_limit: 512m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
+      test: ["CMD", "curl", "-sf", "http://localhost:80/i/"]
+      interval: 60s
       timeout: 10s
       retries: 3
+      start_period: 30s
 
 networks:
   default:
