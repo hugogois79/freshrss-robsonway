@@ -13,7 +13,8 @@ services:
       - ./themes/Robsonway-Compact:/var/www/FreshRSS/p/themes/Robsonway-Compact
     environment:
       - TZ=Europe/Lisbon
-      - CRON_MIN=*/15
+      - CRON_MIN=*/5
+      - FRESHRSS_ENV=production
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
       interval: 30s

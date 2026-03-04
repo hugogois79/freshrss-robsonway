@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
-/*=== Robsonway Compact: Bloomberg-style dark theme with compact text ===*/
+/*=== Robsonway Compact: Bloomberg-style dark theme ===*/
+/*=== Dark mode + compact text + collapsible sidebar ===*/
 
+/* ============================================
+   CSS VARIABLES — full dark color palette
+   ============================================ */
 :root {
 	--background-color-light-gradient1: #1a1a2e;
 	--background-color-light-gradient2: #16213e;
@@ -23,7 +27,6 @@
 	--contrast-background-color-hover: #1976d2;
 	--contrast-background-color-active: #0d47a1;
 	--contrast-border-color: #1565c0;
-
 	--contrast-background-font-color: #e0e0e0;
 
 	--attention-background-color-gradient1: #c62828;
@@ -77,27 +80,85 @@
 	--form-element-focus-box-shadow-color-inset: #1a237e;
 }
 
+/* ============================================
+   BASE — compact font + dark background
+   ============================================ */
 html {
 	font-size: 80%;
 }
 
 body {
-	background: #0f0f1a;
-	color: #e0e0e0;
+	background: #0f0f1a !important;
+	color: #e0e0e0 !important;
 }
 
+a {
+	color: #64b5f6;
+}
+
+a:hover {
+	color: #90caf9;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
 .header {
 	background: #0a0a18 !important;
-	border-bottom: 1px solid #2a2a40;
+	border-bottom: 1px solid #2a2a40 !important;
+}
+
+.header .item {
+	font-size: 0.82rem;
+	color: #e0e0e0;
 }
 
 .header .item .logo {
 	filter: brightness(0.8) invert(0.8);
 }
 
-#aside {
-	background: #0a0a18;
-	border-right: 1px solid #2a2a40;
+/* ============================================
+   SIDEBAR — auto-collapse on desktop
+   ============================================ */
+#aside,
+.aside {
+	background: #0a0a18 !important;
+	border-right: 1px solid #2a2a40 !important;
+}
+
+@media (min-width: 841px) {
+	.aside.aside_feed {
+		width: 2.5rem !important;
+		overflow: hidden !important;
+		transition: width 0.25s ease, overflow 0.1s ease 0.25s;
+		white-space: nowrap;
+	}
+
+	.aside.aside_feed:hover {
+		width: 260px !important;
+		overflow: visible !important;
+		overflow-y: auto !important;
+		transition: width 0.25s ease, overflow 0s ease 0s;
+		box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+		z-index: 100;
+	}
+
+	.aside.aside_feed .tree,
+	.aside.aside_feed .nav-list,
+	.aside.aside_feed .nav_menu {
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
+
+	.aside.aside_feed:hover .tree,
+	.aside.aside_feed:hover .nav-list,
+	.aside.aside_feed:hover .nav_menu {
+		opacity: 1;
+	}
+
+	.aside.aside_feed .toggle_aside {
+		opacity: 1 !important;
+	}
 }
 
 .aside .nav-list .item a,
@@ -117,6 +178,29 @@ body {
 	background-color: #1565c0;
 }
 
+.nav-list .item > a,
+.nav-list .item > .as-link,
+.nav-list .item > span,
+.nav-list .item > div {
+	font-size: 0.82rem;
+	padding: 2px 10px;
+}
+
+.nav-list .feed .item-title {
+	font-size: 0.78rem;
+}
+
+.aside_feed .tree-folder-title {
+	color: #b0bec5;
+}
+
+.aside_feed .tree-folder-title:hover {
+	background: #1a1a2e;
+}
+
+/* ============================================
+   FEED LIST — article rows
+   ============================================ */
 .flux {
 	border-bottom: 1px solid #1a1a30;
 }
@@ -127,7 +211,7 @@ body {
 }
 
 .flux:hover {
-	background-color: #1e1e35;
+	background-color: #1e1e35 !important;
 }
 
 .flux .website {
@@ -140,9 +224,18 @@ body {
 	color: #757575;
 }
 
-.content {
+.day .name {
+	font-size: 0.85rem;
+	color: #9e9e9e;
 	background: #0f0f1a;
-	color: #cfd8dc;
+}
+
+/* ============================================
+   ARTICLE CONTENT
+   ============================================ */
+.content {
+	background: #0f0f1a !important;
+	color: #cfd8dc !important;
 	font-size: 0.88rem;
 	line-height: 1.55;
 }
@@ -165,92 +258,98 @@ body {
 .content h2 { font-size: 1.15em; }
 .content h3 { font-size: 1.05em; }
 
-.nav-list .item > a,
-.nav-list .item > .as-link,
-.nav-list .item > span,
-.nav-list .item > div {
+/* ============================================
+   BUTTONS, INPUTS, FORMS — dark everywhere
+   ============================================ */
+.btn {
 	font-size: 0.82rem;
-	padding: 2px 10px;
+	background: #1a1a2e !important;
+	color: #e0e0e0 !important;
+	border-color: #2a2a40 !important;
 }
 
-.nav-list .feed .item-title {
-	font-size: 0.78rem;
+.btn:hover {
+	background: #22223a !important;
 }
 
-.header .item {
+.btn.btn-important {
+	background: #1565c0 !important;
+	border-color: #0d47a1 !important;
+	color: #fff !important;
+}
+
+input, select, textarea {
+	background: #141425 !important;
+	color: #e0e0e0 !important;
+	border-color: #2a2a40 !important;
+}
+
+input:focus, select:focus, textarea:focus {
+	border-color: #42a5f5 !important;
+	outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	accent-color: #1565c0;
+}
+
+.search input {
 	font-size: 0.82rem;
 }
 
+/* ============================================
+   DROPDOWN MENUS
+   ============================================ */
 .dropdown-menu {
-	background: #141425;
-	border: 1px solid #2a2a40;
+	background: #141425 !important;
+	border: 1px solid #2a2a40 !important;
 }
 
 .dropdown-menu .item > a,
 .dropdown-menu .item > span,
 .dropdown-menu .item > .as-link {
 	font-size: 0.8rem;
-	color: #b0bec5;
+	color: #b0bec5 !important;
 }
 
 .dropdown-menu .item > a:hover,
 .dropdown-menu .item > a:focus {
-	background: #1a1a2e;
-	color: #e0e0e0;
+	background: #1a1a2e !important;
+	color: #e0e0e0 !important;
 }
 
-.day .name {
-	font-size: 0.85rem;
-	color: #9e9e9e;
+/* ============================================
+   SETTINGS / CONFIGURE PAGES — full dark
+   ============================================ */
+.configure,
+.post,
+.post.content,
+.post.content.centered {
+	background: #0f0f1a !important;
+	color: #e0e0e0 !important;
 }
 
-.pagination {
-	font-size: 0.8rem;
+.configure a,
+.post a {
+	color: #64b5f6;
 }
 
-#mark-read-aside,
-.nav_menu .btn {
-	font-size: 0.78rem;
-	padding: 3px 8px;
-}
-
-.btn {
-	font-size: 0.82rem;
-	background: #1a1a2e;
-	color: #e0e0e0;
-	border-color: #2a2a40;
-}
-
-.btn:hover {
-	background: #22223a;
-}
-
-.search input {
-	font-size: 0.82rem;
-	background: #141425;
-	color: #e0e0e0;
-	border-color: #2a2a40;
-}
-
-.tag {
-	font-size: 0.7rem;
-	background: #1a1a2e;
+.configure a:hover,
+.post a:hover {
 	color: #90caf9;
-	border-color: #2a2a40;
 }
 
-.alert {
-	font-size: 0.82rem;
+.configure h1, .configure h2, .configure h3,
+.post h1, .post h2, .post h3 {
+	color: #eceff1;
 }
 
-input, select, textarea {
-	background: #141425;
-	color: #e0e0e0;
-	border-color: #2a2a40;
+.form-group .group-name {
+	color: #b0bec5;
 }
 
-.configure {
-	background: #0f0f1a;
+.form-group .group-controls {
 	color: #e0e0e0;
 }
 
@@ -261,18 +360,88 @@ input, select, textarea {
 	font-size: 0.82rem;
 }
 
+.aside:not(.aside_feed) {
+	background: #0a0a18 !important;
+}
+
+.aside:not(.aside_feed) .nav-list .item a {
+	color: #b0bec5;
+}
+
+.aside:not(.aside_feed) .nav-list .item a:hover {
+	color: #e0e0e0;
+	background: #1a1a2e;
+}
+
+.aside:not(.aside_feed) .nav-list .item.active a {
+	color: #fff;
+	background: #1565c0;
+}
+
+table, th, td {
+	border-color: #2a2a40 !important;
+}
+
+th {
+	background: #141425 !important;
+	color: #b0bec5 !important;
+}
+
+td {
+	background: #0f0f1a !important;
+	color: #e0e0e0 !important;
+}
+
+/* ============================================
+   TAGS
+   ============================================ */
+.tag {
+	font-size: 0.7rem;
+	background: #1a1a2e;
+	color: #90caf9;
+	border-color: #2a2a40;
+}
+
+/* ============================================
+   NOTIFICATIONS & ALERTS
+   ============================================ */
+.alert {
+	font-size: 0.82rem;
+}
+
 .notification {
 	border-radius: 2px;
 }
 
+#mark-read-aside,
+.nav_menu .btn {
+	font-size: 0.78rem;
+	padding: 3px 8px;
+}
+
+.pagination {
+	font-size: 0.8rem;
+}
+
+/* ============================================
+   SLIDER / ARTICLE PANEL
+   ============================================ */
+#slider {
+	background: #0f0f1a !important;
+	border-left: 1px solid #2a2a40;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
 ::selection {
 	background: #1565c0;
 	color: #fff;
 }
 
 ::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
+	width: 6px;
+	height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -281,9 +450,20 @@ input, select, textarea {
 
 ::-webkit-scrollbar-thumb {
 	background: #2a2a40;
-	border-radius: 4px;
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
 	background: #3a3a55;
+}
+
+/* ============================================
+   LOGIN PAGE
+   ============================================ */
+.formLogin {
+	background: #0f0f1a !important;
+}
+
+.formLogin .header {
+	background: #0a0a18 !important;
 }
