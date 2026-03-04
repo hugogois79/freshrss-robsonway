@@ -208,7 +208,7 @@ a:hover {
 }
 
 .flux .item-title {
-	color: #e0e0e0;
+	color: #ffffff !important;
 	font-size: 0.85em;
 }
 
@@ -220,18 +220,13 @@ a:hover {
 
 .flux.not_read .item-title {
 	font-weight: 600;
-	color: #fff;
+	color: #ffffff;
 }
 
-/* Read articles: dimmed for fast scanning */
+/* Read articles: lighter text, still readable */
 .flux:not(.not_read) .item-title {
-	color: #707890;
+	color: #c0c8d8;
 	font-weight: 400;
-}
-
-.flux:not(.not_read) .website,
-.flux:not(.not_read) .date {
-	opacity: 0.5;
 }
 
 /* Favorite articles: gold accent */
